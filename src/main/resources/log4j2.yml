@@ -8,13 +8,13 @@ Configuration:
     Console:
       name: Console_Appender
       target: SYSTEM_OUT
-      PatternLayout:
-        pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
+      JsonLayout:
+        prettyPrint: ${sys:prettyPrint:-false}
     File:
       name: File_Appender
       fileName: ${log-path}/logfile.log
-      PatternLayout:
-        pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
+      JsonLayout:
+        prettyPrint: ${sys:prettyPrint:-false}
   Loggers:
     Root:
       level: debug
@@ -22,7 +22,7 @@ Configuration:
         - ref: Console_Appender
     Logger:
       - name: com.yogeshwar.logger
-        level: debug
+        level: info
         AppenderRef:
           - ref: File_Appender
             level: error
